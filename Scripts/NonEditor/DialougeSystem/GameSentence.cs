@@ -4,7 +4,7 @@ using UnityEngine;
 namespace CXUtils.DialougeSystem
 {
     /// <summary>
-    /// A single sentence in a piece of dialouge
+    /// A single sentence in a piece of dialouge data
     /// </summary>
     [Serializable]
     public class GameSentence
@@ -18,7 +18,7 @@ namespace CXUtils.DialougeSystem
         /// <summary>
         /// The content of the sentence
         /// </summary>
-        [TextArea]
+        [TextArea(5, 10)]
         public string content;
 
         /// <summary>

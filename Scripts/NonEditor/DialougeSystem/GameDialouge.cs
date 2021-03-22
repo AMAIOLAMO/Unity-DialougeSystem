@@ -8,14 +8,14 @@ namespace CXUtils.DialougeSystem
     /// </summary>
     public class GameDialouge
     {
-        public GameDialouge(GameDialougeData dialougeData)
+        public GameDialouge(GameDialogueData dialogueData)
         {
-            DialougeData = dialougeData;
+            DialogueData = dialogueData;
             
             ResetDialouge();
         }
 
-        public readonly GameDialougeData DialougeData;
+        public readonly GameDialogueData DialogueData;
 
         private Queue<GameSentence> _dialougeQueue;
 
@@ -33,7 +33,7 @@ namespace CXUtils.DialougeSystem
         /// Reset's the whole sentence queue
         /// </summary>
         public void ResetDialouge() =>
-            _dialougeQueue = new Queue<GameSentence>(DialougeData.Sentences);
+            _dialougeQueue = new Queue<GameSentence>(DialogueData.Sentences);
 
         /// <summary>
         /// Peeks like a Queue from the sentences queue
@@ -51,7 +51,7 @@ namespace CXUtils.DialougeSystem
             //if end of queue then just return null
             if (IsEndOfQueue) return null;
             
-            GameSentence newSentence = _dialougeQueue.Dequeue();
+            var newSentence = _dialougeQueue.Dequeue();
             OnNextSentenceTriggered?.Invoke(newSentence);
             return newSentence;
         }

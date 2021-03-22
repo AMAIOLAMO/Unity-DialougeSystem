@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace CXUtils.DialougeSystem.Test
@@ -12,13 +13,13 @@ namespace CXUtils.DialougeSystem.Test
 
         [SerializeField] private Button dialougeNextButton;
 
-        [SerializeField] private GameDialougeData testDialougeData;
+        [FormerlySerializedAs("testDialougeData")] [SerializeField] private GameDialogueData testDialogueData;
 
         private GameDialouge _gameDialouge;
 
         private void Awake()
         {
-            _gameDialouge = new GameDialouge(testDialougeData);
+            _gameDialouge = new GameDialouge(testDialogueData);
             
             // Use code for better linking (so we don't do manually)
             dialougeNextButton.onClick.AddListener(NextSentence);
