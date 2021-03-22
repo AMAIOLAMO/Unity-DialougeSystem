@@ -19,7 +19,7 @@ namespace CXUtils.DialougeSystem
 
         public readonly GameDialogueData DialogueData;
 
-        private Queue<GameSentence> _dialougeQueue;
+        private readonly Queue<GameSentence> _dialougeQueue;
 
         /// <summary>
         /// Is the Dialouge queue empty?

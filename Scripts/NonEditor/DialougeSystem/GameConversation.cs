@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace CXUtils.DialougeSystem
 {
@@ -21,16 +18,16 @@ namespace CXUtils.DialougeSystem
 
         public readonly GameConversationData ConversationData;
 
-        private Queue<GameDialouge> _dialougeQueue;
+        private readonly Queue<GameDialouge> _dialougeQueue;
 
         public bool IsEndOfConversation => _dialougeQueue.Count == 0;
 
         public void ResetConversation()
         {
             _dialougeQueue.Clear();
-            
-            for (int i = 0; i < ConversationData.GameDialogueDatas.Length; i++)
-                _dialougeQueue.Enqueue(new GameDialouge(ConversationData.GameDialogueDatas[i]));
+
+            foreach (var dialougeData in ConversationData.GameDialogueDatas)
+                _dialougeQueue.Enqueue(new GameDialouge(dialougeData));
         }
     }
 }
