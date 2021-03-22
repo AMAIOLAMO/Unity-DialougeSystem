@@ -8,7 +8,7 @@ namespace CXUtils.DialougeSystem
     ///     A single piece of dialouge that stores a list of sentences
     ///     (Not intended for modifying externally (only in UnityEditor))
     /// </summary>
-    [CreateAssetMenu(fileName = "gameDialouge", menuName = "CXUtils/DialougeSystem/GameDialouge")]
+    [CreateAssetMenu(fileName = "GameDialogue", menuName = "CXUtils/DialougeSystem/GameDialogueData")]
     [Serializable]
     public class GameDialogueData : ScriptableObject
     {

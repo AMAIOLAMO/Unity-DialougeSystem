@@ -11,27 +11,26 @@ namespace CXUtils.DialougeSystem
     /// </summary>
     public class GameConversation
     {
-        public GameConversation(params GameDialouge[] gameDialogues) =>
-            this.gameDialogues = new List<GameDialouge>(gameDialogues);
+        public GameConversation(GameConversationData conversationData)
+        {
+            this.ConversationData = conversationData;
 
-        public readonly List<GameDialouge> gameDialogues;
+            _dialougeQueue = new Queue<GameDialouge>();
+            ResetConversation();
+        }
+
+        public readonly GameConversationData ConversationData;
 
         private Queue<GameDialouge> _dialougeQueue;
 
         public bool IsEndOfConversation => _dialougeQueue.Count == 0;
 
-        public event Action<GameDialouge> OnNextDialougeCalled;
-
-        public void ResetDialogues() =>
-            _dialougeQueue = new Queue<GameDialouge>(gameDialogues);
-
-        public GameDialouge NextDialogue()
+        public void ResetConversation()
         {
-            if (IsEndOfConversation) return null;
+            _dialougeQueue.Clear();
             
-            var newDialouge = _dialougeQueue.Dequeue();
-            OnNextDialougeCalled?.Invoke(newDialouge);
-            return newDialouge;
+            for (int i = 0; i < ConversationData.GameDialogueDatas.Length; i++)
+                _dialougeQueue.Enqueue(new GameDialouge(ConversationData.GameDialogueDatas[i]));
         }
     }
 }

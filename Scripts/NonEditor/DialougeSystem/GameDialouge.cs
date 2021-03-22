@@ -11,6 +11,8 @@ namespace CXUtils.DialougeSystem
         public GameDialouge(GameDialogueData dialogueData)
         {
             DialogueData = dialogueData;
+
+            _dialougeQueue = new Queue<GameSentence>();
             
             ResetDialouge();
         }
@@ -32,8 +34,13 @@ namespace CXUtils.DialougeSystem
         /// <summary>
         /// Reset's the whole sentence queue
         /// </summary>
-        public void ResetDialouge() =>
-            _dialougeQueue = new Queue<GameSentence>(DialogueData.Sentences);
+        public void ResetDialouge()
+        {
+            _dialougeQueue.Clear();
+
+            for (int i = 0; i < DialogueData.Sentences.Length; i++)
+                _dialougeQueue.Enqueue(DialogueData.Sentences[i]);
+        }
 
         /// <summary>
         /// Peeks like a Queue from the sentences queue
