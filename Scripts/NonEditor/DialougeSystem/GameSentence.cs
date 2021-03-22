@@ -9,10 +9,10 @@ namespace CXUtils.DialougeSystem
     [Serializable]
     public class GameSentence
     {
-        public GameSentence(string content, Action OnSentenceCalled = null)
+        public GameSentence(string content, Action onSentenceCalled = null)
         {
             this.content = content;
-            this.OnSentenceCalled = OnSentenceCalled;
+            this.OnSentenceCalled = onSentenceCalled;
         }
         
         /// <summary>
@@ -25,6 +25,8 @@ namespace CXUtils.DialougeSystem
         /// The action that will be called when triggered by the <see cref="GameDialouge"/>
         /// </summary>
         public event Action OnSentenceCalled;
-        
+
+        protected void CallOnSentenceCalled() =>
+            OnSentenceCalled?.Invoke();
     }
 }
