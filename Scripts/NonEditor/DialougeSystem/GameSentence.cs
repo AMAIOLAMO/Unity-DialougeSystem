@@ -11,15 +11,14 @@ namespace CXUtils.DialougeSystem
     {
         public GameSentence(string content, Action onSentenceCalled = null)
         {
-            this.content = content;
-            this.OnSentenceCalled = onSentenceCalled;
+            _content = content;
+            OnSentenceCalled = onSentenceCalled;
         }
-        
-        /// <summary>
-        /// The content of the sentence
-        /// </summary>
+
+        public string Content => _content;
+
         [TextArea(5, 10)]
-        public string content;
+        [SerializeField] private string _content;
 
         /// <summary>
         /// The action that will be called when triggered by the <see cref="GameDialouge"/>

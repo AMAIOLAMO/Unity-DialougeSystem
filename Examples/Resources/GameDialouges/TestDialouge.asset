@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TestDialouge
   m_EditorClassIdentifier: 
   sentences:
-  - content: hey bro this is a dialouge system for testing :D
-  - content: It's flexible and easy to use hahaha
-  - content: Glad you liked it :> good luck on using this magical dialouge system
+  - _content: Hello this is a testing Sentence
+  - _content: This is another testing sentence
+  - _content: Well what can I say? this is another testing sentence :D
