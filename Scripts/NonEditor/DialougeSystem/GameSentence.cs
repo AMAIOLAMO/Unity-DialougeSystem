@@ -1,31 +1,18 @@
 ﻿using System;
 using UnityEngine;
 
-namespace CXUtils.DialougeSystem
+namespace CXUtils.DialogSystem
 {
     /// <summary>
-    /// A single sentence in a piece of dialouge data
+    ///     A single sentence in a piece of Dialog data
     /// </summary>
     [Serializable]
     public class GameSentence
     {
-        public GameSentence(string content, Action onSentenceCalled = null)
-        {
-            _content = content;
-            OnSentenceCalled = onSentenceCalled;
-        }
+        [TextArea( 5, 10 )]
+        [SerializeField] string content;
+        public GameSentence( string content ) => this.content = content;
 
-        public string Content => _content;
-
-        [TextArea(5, 10)]
-        [SerializeField] private string _content;
-
-        /// <summary>
-        /// The action that will be called when triggered by the <see cref="GameDialouge"/>
-        /// </summary>
-        public event Action OnSentenceCalled;
-
-        protected void CallOnSentenceCalled() =>
-            OnSentenceCalled?.Invoke();
+        public string Content => content;
     }
 }
